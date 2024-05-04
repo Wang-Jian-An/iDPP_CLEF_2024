@@ -1,0 +1,37 @@
+train:
+  file_name: 
+    alsfrs: "train-alsfrs.csv"
+    sensor: "train-sensor.csv"
+    static: "train-static.csv"
+predict:
+  file_name:
+    alsfrs: "test-alsfrs.csv"
+    sensor: "test-sensor.csv"
+    static: "test-static.csv"
+target_columns: 
+  task_1: 
+    - "Q1"
+    - "Q2"
+    - "Q3"
+    - "Q4"
+    - "Q5"
+    - "Q6"
+    - "Q7"
+    - "Q8"
+    - "Q9"
+    - "Q10"
+    - "Q11"
+    - "Q12"
+remove_columns: 
+  alsfrs: 
+    - source
+alsfrs:
+  primary_key: patient_id
+  time_feature: 
+    train_start: days_from_diagnosis
+    train_end: predict_days_from_diagnosis
+    predict_start: first_alsfrs_days_from_diagnosis
+    predict_end: target_alsfrs_days_from_diagnosis
+sensor: 
+  primary_key: patient_id
+  time_feature: measure_days_from_diagnosis
